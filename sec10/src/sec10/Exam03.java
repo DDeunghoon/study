@@ -19,6 +19,7 @@ public class Exam03 {
             System.out.println("실행에 문제가 있습니다");
         } finally {
            System.out.println("다시시작하세요");
+           System.out.println("와아앙" );
         }
 
     }
