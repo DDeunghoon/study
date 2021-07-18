@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CollectionStudy/CollectionStudy.iml" filepath="$PROJECT_DIR$/CollectionStudy/CollectionStudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/collection_study/collection_study.iml" filepath="$PROJECT_DIR$/collection_study/collection_study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/goorm_level_test/goorm_level_test.iml" filepath="$PROJECT_DIR$/goorm_level_test/goorm_level_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inheritance/inheritance.iml" filepath="$PROJECT_DIR$/inheritance/inheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/interface/interface.iml" filepath="$PROJECT_DIR$/interface/interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/new_phone/new_phone.iml" filepath="$PROJECT_DIR$/new_phone/new_phone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/overlay/overlay.iml" filepath="$PROJECT_DIR$/overlay/overlay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/phone/phone.iml" filepath="$PROJECT_DIR$/phone/phone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sec10/sec10.iml" filepath="$PROJECT_DIR$/sec10/sec10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/study.iml" filepath="$PROJECT_DIR$/.idea/study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
+    </modules>
+  </component>
+</project>
