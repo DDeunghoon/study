@@ -1,13 +1,15 @@
 public class Test {
 
     public static void main(String[] args){
-        A a = new A();
-        A.B b = a.new B();
+        H a = new H();
+        H.B b = a.new B();
         b.method1();
 
-        A.C c = new A.C();
+        H.C c = new H.C();
         c.method1();
-        A.C.method2();
+        H.C.method2();
+
+
 
     }
 }
