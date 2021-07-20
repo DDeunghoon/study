@@ -20,14 +20,17 @@ public class Outter {
 
 
     public void method(int arg){
-        int localVariable = 1;
+     final int localVariable = 1; //final 을 붙이면 클래스와같이 올라가기때문에 붙여야함
 //        arg = 100;
-//        localVariable = 100;
+  //      localVariable = 100;
         class Inner{
             public void method1(){
                 int result = arg + localVariable;
             }
         }
+        Inner in = new Inner();
+        in.method1();
+
     }
 
 }

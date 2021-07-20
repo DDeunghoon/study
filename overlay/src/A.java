@@ -22,4 +22,5 @@ public class A {
     static class C {
     }
 
+
 }
