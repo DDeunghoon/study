@@ -22,7 +22,7 @@ public class LinkedListExample {
         arrayList.add(0,String.valueOf(i));
     }
     endTime = System.nanoTime();
-        System.out.println("어레이                 리스트 걸린시간" + (endTime - startTime) + "ns");
+        System.out.println("어레이리스트 걸린시간" + (endTime - startTime) + "ns");
     }
 
 }
