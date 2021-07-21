@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CollectionStudy/CollectionStudy.iml" filepath="$PROJECT_DIR$/CollectionStudy/CollectionStudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/collection_framework/collection_framework.iml" filepath="$PROJECT_DIR$/collection_framework/collection_framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/collection_study/collection_study.iml" filepath="$PROJECT_DIR$/collection_study/collection_study.iml" />
       <module fileurl="file://$PROJECT_DIR$/goorm_level_test/goorm_level_test.iml" filepath="$PROJECT_DIR$/goorm_level_test/goorm_level_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/inheritance/inheritance.iml" filepath="$PROJECT_DIR$/inheritance/inheritance.iml" />
