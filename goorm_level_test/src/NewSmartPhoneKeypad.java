@@ -5,8 +5,11 @@ public class NewSmartPhoneKeypad {
     public static void main(String[] args) {
 
         System.out.println(solution(new int[]{1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5}, "right"));
-
-
+       //                                  LRLLLRLLRRL
+        System.out.println(solution(new int[]{7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2}, "left"));
+       //                                  "LRLLRRLLLRR"
+        System.out.println(solution(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, "right"));
+       //                                  "LLRLLRLLRL"
     }
     //keypad지정
     //손위치 지정
@@ -48,31 +51,50 @@ public class NewSmartPhoneKeypad {
             int number = numbers[i];
             String setNumberPosition = Integer.toString(number);
             Position numberPosition = (position.get(setNumberPosition));
-            double xMinusY = numberPosition.getX() - numberPosition.getY();
-            double numberPositionValue = Math.pow(xMinusY, 2);
-            double leftHandPositionValue = leftHandPosition.getX() - leftHandPosition.getY();
-            double rightHandPositionValue = rightHandPosition.getX() - rightHandPosition.getY();
 
 
             if (number == 1 || number == 4 || number == 7) {
                 String setLeftHandPosition = Integer.toString(number);
                 leftHandPosition = position.get(setLeftHandPosition);
                 answer += "L";
-                break;
+
             } else if (number == 3 || number == 6 || number == 9) {
                 String setRightHandPosition = Integer.toString(number);
                 rightHandPosition = position.get(setRightHandPosition);
                 answer += "R";
-                break;
-            } else if (Math.sqrt(numberPositionValue + leftHandPositionValue) < Math.sqrt(rightHandPositionValue + numberPositionValue)) {
-                answer += "L";
-                break;
-            } else if (Math.sqrt(numberPositionValue + leftHandPositionValue) > Math.sqrt(rightHandPositionValue + numberPositionValue)) {
-                answer += "R";
-                break;
+
+
             } else {
-                answer += hand;
-                break;
+                double leftHandMinusKeypadPositionForX = leftHandPosition.getX() - numberPosition.getX();
+                double leftHandMinusKeypadPositionForY = leftHandPosition.getY() - numberPosition.getY();
+                double distanceFormulaOnTheLeftHand = (Math.pow(leftHandMinusKeypadPositionForX, 2) + (Math.pow(leftHandMinusKeypadPositionForY, 2)));
+                double distanceToKeypadFromLiftHand = Math.sqrt(distanceFormulaOnTheLeftHand);
+                double rightHandMinusKeypadPositionForX = rightHandPosition.getX() - numberPosition.getX();
+                double rightHandMinusKeypadPositionForY = rightHandPosition.getY() - numberPosition.getY();
+                double distanceFormulaOnTheRightHand = (Math.pow(rightHandMinusKeypadPositionForX, 2)) + (Math.pow(rightHandMinusKeypadPositionForY, 2));
+                double distanceToKeypadFromRightHand = Math.sqrt(distanceFormulaOnTheRightHand);
+
+                if (distanceToKeypadFromLiftHand < distanceToKeypadFromRightHand) {
+                    String setLeftHandPosition = Integer.toString(number);
+                    leftHandPosition = position.get(setLeftHandPosition);
+                    answer += "L";
+                }
+                 else if (distanceToKeypadFromLiftHand > distanceToKeypadFromRightHand) {
+                    String setRightHandPosition = Integer.toString(number);
+                    rightHandPosition = position.get(setRightHandPosition);
+                    answer += "R";
+                }
+                else if (hand.equals("right")) {
+                    String setRightHandPosition = Integer.toString(number);
+                    rightHandPosition = position.get(setRightHandPosition);
+                        answer += "R";
+                }
+                else {
+                    String setLeftHandPosition = Integer.toString(number);
+                    leftHandPosition = position.get(setLeftHandPosition);
+                        answer += "L";
+                }
+
             }
         }
         return answer;
@@ -95,6 +117,12 @@ public class NewSmartPhoneKeypad {
 
         return keyPadPosition;
     }
+
+    public static double squaresXMinusY(double x, double y) {
+        double takeXOutY = x - y;
+        return Math.pow(takeXOutY, 2);
+    }
+
 
 
 }
