@@ -4,9 +4,9 @@ import java.util.Map;
 public class NewSmartPhoneKeypad {
     public static void main(String[] args) {
 
-            System.out.println(solution(new int[]{1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5}, "right"));
+        System.out.println(solution(new int[]{1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5}, "right"));
 
-        
+
     }
     //keypad지정
     //손위치 지정
@@ -50,28 +50,28 @@ public class NewSmartPhoneKeypad {
             Position numberPosition = (position.get(setNumberPosition));
             double xMinusY = numberPosition.getX() - numberPosition.getY();
             double numberPositionValue = Math.pow(xMinusY, 2);
-            double leftHandPositionValue = leftHandPosition.getX()-leftHandPosition.getY();
-            double rightHandPositionValue =  rightHandPosition.getX() - rightHandPosition.getY();
+            double leftHandPositionValue = leftHandPosition.getX() - leftHandPosition.getY();
+            double rightHandPositionValue = rightHandPosition.getX() - rightHandPosition.getY();
 
 
             if (number == 1 || number == 4 || number == 7) {
                 String setLeftHandPosition = Integer.toString(number);
                 leftHandPosition = position.get(setLeftHandPosition);
-                answer = "L";
+                answer += "L";
                 break;
             } else if (number == 3 || number == 6 || number == 9) {
                 String setRightHandPosition = Integer.toString(number);
                 rightHandPosition = position.get(setRightHandPosition);
-                answer = "R";
+                answer += "R";
                 break;
-            } else if(Math.sqrt(numberPositionValue+leftHandPositionValue) < Math.sqrt(rightHandPositionValue+numberPositionValue)) {
-                answer = "L";
+            } else if (Math.sqrt(numberPositionValue + leftHandPositionValue) < Math.sqrt(rightHandPositionValue + numberPositionValue)) {
+                answer += "L";
                 break;
-            }else if (Math.sqrt(numberPositionValue+leftHandPositionValue) > Math.sqrt(rightHandPositionValue+numberPositionValue)) {
-                answer = "R";
+            } else if (Math.sqrt(numberPositionValue + leftHandPositionValue) > Math.sqrt(rightHandPositionValue + numberPositionValue)) {
+                answer += "R";
                 break;
-            }else{
-                answer = hand;
+            } else {
+                answer += hand;
                 break;
             }
         }
