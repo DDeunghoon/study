@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/overlay/overlay.iml" filepath="$PROJECT_DIR$/overlay/overlay.iml" />
       <module fileurl="file://$PROJECT_DIR$/phone/phone.iml" filepath="$PROJECT_DIR$/phone/phone.iml" />
       <module fileurl="file://$PROJECT_DIR$/sec10/sec10.iml" filepath="$PROJECT_DIR$/sec10/sec10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sec12/sec12.iml" filepath="$PROJECT_DIR$/sec12/sec12.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/study.iml" filepath="$PROJECT_DIR$/.idea/study.iml" />
       <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
     </modules>

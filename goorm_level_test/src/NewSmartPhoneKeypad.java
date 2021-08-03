@@ -49,8 +49,8 @@ public class NewSmartPhoneKeypad {
         String answer = "";
         for (int i = 0; i < numbers.length; i++) {
             int number = numbers[i];
-            String setNumberPosition = Integer.toString(number);
-            Position numberPosition = (position.get(setNumberPosition));
+             //변수명은 명사 , 메소드는 동사 무엇을 할 건지 나태내는 이름이여야함
+            Position numberPosition = position.get(Integer.toString(number));
 
 
             if (number == 1 || number == 4 || number == 7) {
@@ -73,20 +73,17 @@ public class NewSmartPhoneKeypad {
 //                double rightHandMinusKeypadPositionForY = rightHandPosition.getY() - numberPosition.getY();
 //                double distanceFormulaOnTheRightHand = (Math.pow(rightHandMinusKeypadPositionForX, 2)) + (Math.pow(rightHandMinusKeypadPositionForY, 2));
 //                double distanceToKeypadFromRightHand = Math.sqrt(distanceFormulaOnTheRightHand);
-
-                double distanceToKeypadFromLiftHand = root(minusAndSquare(leftHandPosition.getX(),numberPosition.getX()),minusAndSquare(leftHandPosition.getY(), numberPosition.getY()));
-                double distanceToKeypadFromRightHand = root(minusAndSquare(rightHandPosition.getX(),numberPosition.getX()),minusAndSquare(rightHandPosition.getY(), numberPosition.getY()));
-
-
-                if (distanceToKeypadFromLiftHand < distanceToKeypadFromRightHand) {
+                double distanceToKeypadFromLeftHand = xPlusYRoot(minusAndSquare(leftHandPosition.getX(), numberPosition.getX()), minusAndSquare(leftHandPosition.getY(), numberPosition.getY()));
+                double distanceToKeypadFromRightHand = xPlusYRoot(minusAndSquare(rightHandPosition.getX(), numberPosition.getX()), minusAndSquare(rightHandPosition.getY(), numberPosition.getY()));
+                if (distanceToKeypadFromLeftHand < distanceToKeypadFromRightHand) {
                     String setLeftHandPosition = Integer.toString(number);
                     leftHandPosition = position.get(setLeftHandPosition);
                     answer += "L";
-                } else if (distanceToKeypadFromLiftHand > distanceToKeypadFromRightHand) {
+                } else if (distanceToKeypadFromLeftHand > distanceToKeypadFromRightHand) {
                     String setRightHandPosition = Integer.toString(number);
                     rightHandPosition = position.get(setRightHandPosition);
                     answer += "R";
-                } else if (hand.equals("right")) {
+                } else if (hand.equals("right")) { //한가지만 비교해야하는ㄷ 2개를 하고있음 else안에 넣는게 맞디
                     String setRightHandPosition = Integer.toString(number);
                     rightHandPosition = position.get(setRightHandPosition);
                     answer += "R";
@@ -125,7 +122,7 @@ public class NewSmartPhoneKeypad {
         return result;
     }
 
-    public static double root(double x, double y) {
+    public static double xPlusYRoot(double x, double y) {
         double result = Math.sqrt(x + y);
         return result;
     }
