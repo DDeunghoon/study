@@ -15,10 +15,4 @@ public class UserController {
     public String removeDuplicates(String userId){
         return userService.removeDuplicates(userId);
     }
-    public String firstFullStop(String userId){
-        return userService.firstFullStop(userId);
-    }
-    public String changeEmptySpace(String userId){
-        return userService.changeEmptySpace(userId);
-    }
 }
