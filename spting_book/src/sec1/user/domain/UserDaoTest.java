@@ -1,5 +1,8 @@
 package sec1.user.domain;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import java.sql.SQLException;
 
 public class UserDaoTest {
