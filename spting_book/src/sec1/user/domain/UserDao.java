@@ -2,11 +2,11 @@ package sec1.user.domain;
 
 import java.sql.*;
 
-public abstract class UserDao {
+public class UserDao {
     private ConnectionMaker connectionMaker;
 
-    public UserDao() {
-        connectionMaker = new NConnectionMaker();  //다른클레스에 종속됨
+    public UserDao(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
@@ -45,13 +45,4 @@ public abstract class UserDao {
     }
 }
 
-class NUserDao extends UserDao {
-    //N사 커넥션 재정의 상속을 통해서 다른 다른 커넥션을 쓰고 공통된 기능을 사용할수있다
-    public Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection c = DriverManager.getConnection(
-                "jdbc:mysql://localhost/spring", "root", "qsc20215");
-        return c;
-    }
-}
 
