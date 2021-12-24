@@ -2,8 +2,13 @@ package sec1.user.domain;
 
 public class DaoFactory {
     public UserDao userDao() {
-        ConnectionMaker connectionMaker = new NConnectionMaker();
-        UserDao userDao = new UserDao(connectionMaker);
-        return userDao;
+        return new UserDao(connectionMaker());
+    }
+//    public AccountDao accountDao(){
+//        return new AccountDao(connectionMaker());
+//    }
+
+    public ConnectionMaker connectionMaker(){
+        return new NConnectionMaker();
     }
 }
