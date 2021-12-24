@@ -3,12 +3,14 @@ package sec1.user.domain;
 import java.sql.*;
 
 public abstract class UserDao {
-    private SimpleConnectionMaker simpleConnectionMaker;
-    public UserDao(){
-        simpleConnectionMaker = new SimpleConnectionMaker();
+    private ConnectionMaker connectionMaker;
+
+    public UserDao() {
+        connectionMaker = new NConnectionMaker();  //다른클레스에 종속됨
     }
+
     public void add(User user) throws ClassNotFoundException, SQLException {
-        Connection c = simpleConnectionMaker.makeNewConnection();
+        Connection c = connectionMaker.makeConnection(); //인터페이스에 정의된걸 사용해서 클래스가 바뀌어도 메소도이름이 변경될 걱정은없다
         PreparedStatement ps = c.prepareStatement(
                 "insert into users(id,name,password) values(?,?,?)");
         ps.setString(1, user.getId());
@@ -22,7 +24,7 @@ public abstract class UserDao {
     }
 
     public User get(String id) throws ClassNotFoundException, SQLException {
-        Connection c = simpleConnectionMaker.makeNewConnection();
+        Connection c = connectionMaker.makeConnection();
         PreparedStatement ps = c.prepareStatement(
                 "select * from users where id = ?");
         ps.setString(1, id);
@@ -41,12 +43,6 @@ public abstract class UserDao {
         return user;
 
     }
-
-    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
-//        Class.forName("com.mysql.cj.jdbc.Driver");
-//        Connection c = DriverManager.getConnection(
-//                "jdbc:mysql://localhost/spring","root","qsc20215");
-//        return c;
 }
 
 class NUserDao extends UserDao {
@@ -57,33 +53,5 @@ class NUserDao extends UserDao {
                 "jdbc:mysql://localhost/spring", "root", "qsc20215");
         return c;
     }
-    //테스트 코드
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        NUserDao nUserDao = new NUserDao();
-        User user = new User();
-        user.setId("springId");
-        user.setName("노성훈");
-        user.setPassword("123");
-
-        nUserDao.add(user);
-
-        System.out.println(user.getId() + "등록성공");
-
-        User user2 = nUserDao.get(user.getId());
-        System.out.println(user2.getName());
-        System.out.println(user2.getPassword());
-
-        System.out.println(user2.getId() + "조회성공");
-    }
-
 }
 
-class DUserDao extends UserDao {
-    //D사 커넥션 재정의 상속을 통해서 다른 다른 커넥션을 쓰고 공통된 기능을 사용할수있다
-    public Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection c = DriverManager.getConnection(
-                "jdbc:mysql://localhost/spring", "root", "qsc20215");
-        return c;
-    }
-}
