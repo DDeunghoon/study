@@ -1,14 +1,17 @@
 package sec1.user.domain;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import java.sql.*;
 
 public class UserDao {
     private ConnectionMaker connectionMaker;
 
 
-    public UserDao() { //의존관계 검색과 주입 방법
-        DaoFactory daoFactory = new DaoFactory();  //스스로 DaoFactory에게 요청을 보냄  외부로부터 주입받지 않음 
-        this.connectionMaker = daoFactory.connectionMaker();  //인덱스만 알고있으면 된다
+    public UserDao() { //애플리케이션 컨텍스트를 이용해서 이용해서 의존관계 검색 사용
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(DaoFactory.class); 
+        this.connectionMaker = context.getBean("connectionMaker",ConnectionMaker.class);
     }
 
 
