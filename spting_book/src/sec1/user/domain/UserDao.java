@@ -5,11 +5,12 @@ import java.sql.*;
 public class UserDao {
     private ConnectionMaker connectionMaker;
 
-    public UserDao() {
-        connectionMaker = new NConnectionMaker(); // 관계설정 책임분리 전의 생성자
-        //UserDao는 설계시점에서 NConnectionMaker이라는 구체적인 클래스의 존재를 알고있음
-        //Connection인터페이스의 관계와 런타임 의존관계까지 결정 관리하는 상태임  매우 좋지않은 코드 
+
+    public UserDao() { //의존관계 검색과 주입 방법
+        DaoFactory daoFactory = new DaoFactory();  //스스로 DaoFactory에게 요청을 보냄  외부로부터 주입받지 않음 
+        this.connectionMaker = daoFactory.connectionMaker();  //인덱스만 알고있으면 된다
     }
+
 
     //    public UserDao(ConnectionMaker connectionMaker) {
 //        this.connectionMaker = connectionMaker;
