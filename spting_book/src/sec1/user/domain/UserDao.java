@@ -8,16 +8,9 @@ public class UserDao {
     private ConnectionMaker connectionMaker;
 
 
-    public UserDao() { //애플리케이션 컨텍스트를 이용해서 이용해서 의존관계 검색 사용
-        AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(DaoFactory.class); 
-        this.connectionMaker = context.getBean("connectionMaker",ConnectionMaker.class);
+    public UserDao(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
     }
-
-
-    //    public UserDao(ConnectionMaker connectionMaker) {
-//        this.connectionMaker = connectionMaker;
-//    }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
         Connection c = connectionMaker.makeConnection(); //인터페이스에 정의된걸 사용해서 클래스가 바뀌어도 메소도이름이 변경될 걱정은없다
