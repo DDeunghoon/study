@@ -12,5 +12,5 @@ public class DaoFactory {
     public ConnectionMaker connectionMaker(){
         return new NConnectionMaker();
     } //DI 방식을 적용하면 여기부분을 변경하는것만으로도 db를 변경할수있다
-    //효율이 높아짐 
+    //효율이 높아짐
 }
