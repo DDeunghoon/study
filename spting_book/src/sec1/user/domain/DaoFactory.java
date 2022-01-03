@@ -1,18 +1,28 @@
 package sec1.user.domain;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class DaoFactory {
     @Bean
-    public UserDao userDao() {   // = <bean
-        UserDao userDao = new UserDao(); //= class="sec1.user.domain.UserDao" >
-        userDao.setConnectionMaker(connectionMaker()); // <property name="connectionMaker" ref="connectionMaker" />
-        return userDao; //</bean>
+    public UserDao userDao() {
+        UserDao userDao = new UserDao();
+        userDao.setConnectionMaker(dataSource());
+        return userDao;
     }
-    @Bean   // ============== <bean
-    public ConnectionMaker
-    connectionMaker(){ // ==============  id = "connectionMaker"
-        return new NConnectionMaker(); // ============== class="sec1.user.domain.NConnectionMaker" />
+
+    @Bean
+    public DataSource dataSource() {
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+
+        dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
+        dataSource.setUrl("jdbc:mysql://localhost/spring");
+        dataSource.setUsername("root");
+        dataSource.setPassword("qsc20215");
+        return dataSource;
     }
 }
