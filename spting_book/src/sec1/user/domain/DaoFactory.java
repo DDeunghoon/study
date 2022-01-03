@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DaoFactory {
     @Bean
-    public UserDao userDao() {
-        UserDao userDao = new UserDao();
-        userDao.setConnectionMaker(connectionMaker());
-        return userDao;
+    public UserDao userDao() {   // = <bean
+        UserDao userDao = new UserDao(); //= class="sec1.user.domain.UserDao" >
+        userDao.setConnectionMaker(connectionMaker()); // <property name="connectionMaker" ref="connectionMaker" />
+        return userDao; //</bean>
     }
     @Bean   // ============== <bean
     public ConnectionMaker
