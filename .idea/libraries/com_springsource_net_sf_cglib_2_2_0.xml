@@ -8,6 +8,7 @@
       <root url="jar://$PROJECT_DIR$/../Downloads/springSource/spring-context-3.0.7.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/../Downloads/springSource/spring-core-3.0.7.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/../Downloads/springSource/spring-expression-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/springSource/spring-jdbc-3.0.7.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
