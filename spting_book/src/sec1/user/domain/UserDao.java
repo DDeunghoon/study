@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class UserDao {
     private DataSource dataSource;
-    
+
 
     public void setConnectionMaker(DataSource dataSource) {
         this.dataSource = dataSource;

@@ -1,19 +1,20 @@
 package sec1.user.domain;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class CountingConnectionMaker implements ConnectionMaker{
     int counter = 0;
-    private ConnectionMaker realConnectionMaker;
+    private DataSource realConnectionMaker;
 
-    public CountingConnectionMaker(ConnectionMaker realConnectionMaker) {
+    public CountingConnectionMaker(DataSource realConnectionMaker) {
         this.realConnectionMaker = realConnectionMaker;
     }
 
     public Connection makeConnection() throws ClassNotFoundException,SQLException{
         this.counter++;
-        return realConnectionMaker.makeConnection();
+        return realConnectionMaker.getConnection();
     }
     public int getCounter(){
         return this.counter;
