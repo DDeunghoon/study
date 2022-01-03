@@ -10,8 +10,9 @@ public class DaoFactory {
         userDao.setConnectionMaker(connectionMaker());
         return userDao;
     }
-    @Bean
-    public ConnectionMaker connectionMaker(){
-        return new NConnectionMaker();
+    @Bean   // ============== <bean
+    public ConnectionMaker
+    connectionMaker(){ // ==============  id = "connectionMaker"
+        return new NConnectionMaker(); // ============== class="sec1.user.domain.NConnectionMaker" />
     }
 }
