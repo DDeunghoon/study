@@ -3,6 +3,10 @@ package sec1.user.domain;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.junit.Test;
+
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+
 import java.sql.SQLException;
 
 public class UserDaoTest {
@@ -11,21 +15,15 @@ public class UserDaoTest {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
         UserDao dao = context.getBean("userDao", UserDao.class);
         User user = new User();
-        user.setId("spring");
-        user.setName("노성훈");
-        user.setPassword("123");
+        user.setId("spring1");
+        user.setName("노성훈1");
+        user.setPassword("1234");
         dao.add(user);
 
         User user2 = dao.get(user.getId());
-        System.out.println("등록 성공!! = "+user2.getId());
-        assertThat()
-            System.out.println("테스트 실패 (name)");
+        System.out.println("등록 성공!! = " + user2.getId());
+        assertThat(user.getName(), is(user2.getName()));
+        assertThat(user.getPassword(), is(user2.getPassword()));
 
-        if (!user.getPassword().equals(user2.getPassword())) {
-            System.out.println("테스트 실패 (password)");
-        }
-        else {
-        System.out.println("조회 성공");}
     }
-
 }
