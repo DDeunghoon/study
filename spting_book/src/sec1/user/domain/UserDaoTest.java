@@ -18,10 +18,10 @@ public class UserDaoTest {
         User user2 = dao.get(user.getId());
         System.out.println("등록 성공!! = "+user2.getId());
         if (!user.getName().equals(user2.getName())){
-            System.out.println("테스트 실패!");
+            System.out.println("테스트 실패 (name)");
         }
         if (!user.getPassword().equals(user2.getPassword())) {
-            System.out.println("테스트 실패!");
+            System.out.println("테스트 실패 (password)");
         }
         else {
         System.out.println("조회 성공");}
