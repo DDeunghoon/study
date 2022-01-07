@@ -1,19 +1,15 @@
 package sec1.user.domain;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
 import org.junit.Test;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
-import org.junit.runner.JUnitCore;
+
 
 import java.sql.SQLException;
 
 public class UserDaoTest {
-    public static void main(String[] args) {
-    JUnitCore.main("sec1.user.domain.UserDaoTest");
-    }
     @Test
     public void addAndGet() throws SQLException, ClassNotFoundException {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
