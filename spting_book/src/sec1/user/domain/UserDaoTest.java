@@ -13,20 +13,23 @@ import java.sql.SQLException;
 
 public class UserDaoTest {
     private UserDao dao;
-
+    private User user1;
+    private User user2;
+    private User user3;
     @Before
     public void setUp() {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(DaoFactory.class);
         this.dao = context.getBean("userDao", UserDao.class);
+        this.user1 = new User("아이디1","이름1","비번1");
+        this.user2 = new User("아이디2","이름2","비번2");
+        this.user3 = new User("아이디3","이름3","비번3");
     }
 
     @Test
     public void addAndGet() throws SQLException, ClassNotFoundException {
         dao.deleteAll();
         assertThat(dao.getCount(), is(0));
-        User user1 = new User("아이디12", "이름1", "비번1");
-        User user2 = new User("아이디22", "이름2", "비번2");
         dao.deleteAll();
 
         dao.add(user1);
@@ -42,10 +45,6 @@ public class UserDaoTest {
 
     @Test
     public void count() throws SQLException, ClassNotFoundException {
-        User user1 = new User("아이디1", "이름1", "비번1");
-        User user2 = new User("아이디2", "이름2", "비번2");
-        User user3 = new User("아이디3", "이름3", "비번3");
-        User user4 = new User("아이디4", "이름4", "비번4");
 
         dao.deleteAll();
         assertThat(dao.getCount(), is(0));
@@ -55,8 +54,7 @@ public class UserDaoTest {
         assertThat(dao.getCount(), is(2));
         dao.add(user3);
         assertThat(dao.getCount(), is(3));
-        dao.add(user4);
-        assertThat(dao.getCount(), is(4));
+
     }
 
     @Test(expected = EmptyResultDataAccessException.class)
