@@ -5,6 +5,14 @@ public class User {
     String name;
     String password;
 
+    public User(){}
+
+    public User(String id, String name, String password) {
+        this.name = name;
+        this.id = id;
+        this.password = password;
+    }
+
     public String getId() {
         return id;
     }

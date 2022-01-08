@@ -7,19 +7,7 @@ import java.sql.*;
 
 public class UserDao {
     private DataSource dataSource;
-    private String id;
-    private String name;
-    private String password;
 
-
-    public UserDao() {
-    }
-
-    public UserDao(String id, String name, String password) {
-        this.name = name;
-        this.id = id;
-        this.password = password;
-    }
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
