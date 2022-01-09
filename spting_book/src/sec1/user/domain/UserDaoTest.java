@@ -21,9 +21,9 @@ public class UserDaoTest {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(DaoFactory.class);
         this.dao = context.getBean("userDao", UserDao.class);
-        this.user1 = new User("아이디1","이름1","비번1");
-        this.user2 = new User("아이디2","이름2","비번2");
-        this.user3 = new User("아이디3","이름3","비번3");
+        this.user1 = new User("아이디2","이름1","비번1");
+        this.user2 = new User("아이디3","이름2","비번2");
+        this.user3 = new User("아이디4","이름3","비번3");
     }
 
     @Test
