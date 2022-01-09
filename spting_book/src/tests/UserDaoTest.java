@@ -1,5 +1,3 @@
-package sec1.user.domain;
-
 import org.junit.Before;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.junit.Test;
@@ -8,6 +6,9 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 
 import org.springframework.dao.EmptyResultDataAccessException;
+import sec1.user.domain.DaoFactory;
+import sec1.user.domain.User;
+import sec1.user.domain.UserDao;
 
 import java.sql.SQLException;
 
