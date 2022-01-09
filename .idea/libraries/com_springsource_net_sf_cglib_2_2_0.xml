@@ -11,8 +11,11 @@
       <root url="jar://$PROJECT_DIR$/../Downloads/springSource/spring-jdbc-3.0.7.RELEASE.jar!/" />
       <root url="file://$PROJECT_DIR$/../Downloads/springSource/jar_files" />
       <root url="jar://$PROJECT_DIR$/../Downloads/springSource/junit-4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/springSource/commons-logging-1.2/commons-logging-1.2.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../Downloads/springSource/commons-logging-1.2/commons-logging-1.2-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES />
     <jarDirectory url="file://$PROJECT_DIR$/../Downloads/springSource/jar_files" recursive="false" />
   </library>
