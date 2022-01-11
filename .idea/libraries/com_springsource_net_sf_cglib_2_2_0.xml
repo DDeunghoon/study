@@ -12,6 +12,7 @@
       <root url="file://$PROJECT_DIR$/../Downloads/springSource/jar_files" />
       <root url="jar://$PROJECT_DIR$/../Downloads/springSource/junit-4.10.jar!/" />
       <root url="jar://$PROJECT_DIR$/../Downloads/springSource/commons-logging-1.2/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/springSource/spring-test-3.0.7.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../Downloads/springSource/commons-logging-1.2/commons-logging-1.2-javadoc.jar!/" />
