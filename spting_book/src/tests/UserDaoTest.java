@@ -9,28 +9,32 @@ import static org.hamcrest.CoreMatchers.is;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sec1.user.domain.User;
 import sec1.user.domain.UserDao;
+
+import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/applicationContext.xml")
+@DirtiesContext
 public class UserDaoTest {
     @Autowired
-    private ApplicationContext context;
     private UserDao dao;
     private User user1;
     private User user2;
 
 
-
     @Before
     public void setUp() {
-        this.dao = context.getBean("userDao", UserDao.class);
-        this.user1 = new User("아이디5","이름1","비번1");
-        this.user2 = new User("아이디3","이름2","비번2");
+        DataSource dataSource = new SingleConnectionDataSource("jdbc:mysql://localhost/testdb","root","qsc20215",true);
+        dao.setDataSource(dataSource);
+        this.user1 = new User("아이디5", "이름1", "비번1");
+        this.user2 = new User("아이디3", "이름2", "비번2");
     }
 
     @Test
@@ -44,7 +48,6 @@ public class UserDaoTest {
         assertThat(dao.getCount(), is(2));
 
         System.out.println(dao.get("아이디2")); // null 발생
-
 
 
     }
