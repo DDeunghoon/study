@@ -19,15 +19,38 @@ public class UserDao {
 
 
     public void add(User user) throws SQLException {
-        Connection c = dataSource.getConnection();
-        PreparedStatement ps = c.prepareStatement(
-                "insert into users(id,name,password) values(?,?,?)");
-        ps.setString(1, user.getId());
-        ps.setString(2, user.getName());
-        ps.setString(3, user.getPassword());
+        Connection c = null;
+        PreparedStatement ps = null;
 
-        ps.executeUpdate();
+        try {
+            c = dataSource.getConnection();
 
+
+            ps = c.prepareStatement(
+                    "insert into users(id,name,password) values(?,?,?)");
+            ps.setString(1, user.getId());
+            ps.setString(2, user.getName());
+            ps.setString(3, user.getPassword());
+            //코드가 바뀌는 부분이다
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+
+                }
+            }
+            if (c != null) {
+                try {
+                    c.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
         ps.close();
         c.close();
     }
@@ -61,7 +84,11 @@ public class UserDao {
 
         try {
             c = dataSource.getConnection();
+
+
             ps = c.prepareStatement("DELETE FROM users");
+            //코드가 바뀌는 부분이다
+
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
