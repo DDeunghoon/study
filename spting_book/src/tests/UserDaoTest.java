@@ -31,8 +31,8 @@ public class UserDaoTest {
         System.out.println("=================="+ this.context);
         System.out.println("==================="+this);
         this.dao = context.getBean("userDao", UserDao.class);
-        this.user1 = new User("아이디5", "이름1", "비번1");
-        this.user2 = new User("아이디3", "이름2", "비번2");
+        this.user1 = new User("asdf", "asdf1", "asdf1");
+        this.user2 = new User("adsf3", "asdfasdf2", "asdfw2");
     }
 
     @Test
@@ -45,7 +45,9 @@ public class UserDaoTest {
         dao.add(user2);
         assertThat(dao.getCount(), is(2));
 
-        System.out.println(dao.get("아이디2")); // null 발생
+
+
+        System.out.println(dao.get(user1.getId())); // null 발생
 
 
     }
