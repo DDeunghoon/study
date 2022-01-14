@@ -1,4 +1,4 @@
-package sec1.user.domain;
+package user.domain;
 
 public class User {
     String id;

@@ -1,4 +1,4 @@
-package sec1.user.domain;
+package user.domain;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

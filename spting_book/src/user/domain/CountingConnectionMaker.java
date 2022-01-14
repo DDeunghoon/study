@@ -1,4 +1,4 @@
-package sec1.user.domain;
+package user.domain;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
