@@ -62,7 +62,7 @@ public class UserDao {
         ps.setString(1, id);
 
         ResultSet rs = ps.executeQuery();
-        User user = null;
+        User user = new User();
         if (rs.next()) {
             user.setId(rs.getString("id"));
             user.setName(rs.getString("name"));
@@ -86,7 +86,7 @@ public class UserDao {
             c = dataSource.getConnection();
 
 
-            ps = c.prepareStatement("DELETE FROM users");
+            ps = makeStatement(c);
             //코드가 바뀌는 부분이다
 
             ps.executeUpdate();
@@ -109,6 +109,12 @@ public class UserDao {
         }
         ps.close();
         c.close();
+    }
+
+    private PreparedStatement makeStatement(Connection c) throws SQLException{
+        PreparedStatement ps;
+        ps = c.prepareStatement("DELETE FROM users");
+        return ps;
     }
 
 
