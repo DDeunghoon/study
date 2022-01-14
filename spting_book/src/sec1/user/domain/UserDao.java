@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 
-public abstract class UserDao {
+public class UserDao {
     private DataSource dataSource;
 
 
@@ -86,8 +86,10 @@ public abstract class UserDao {
             c = dataSource.getConnection();
 
 
-            ps = makeStatement(c);
-            //코드가 바뀌는 부분이다
+            StatementStrategy strategy = new DeleteAllStatement();
+            ps = strategy.makePreparedStatement(c);
+            
+
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -110,8 +112,6 @@ public abstract class UserDao {
         ps.close();
         c.close();
     }
-
-    abstract protected PreparedStatement makeStatement(Connection c) throws SQLException;
 
 
     public int getCount() throws SQLException {
