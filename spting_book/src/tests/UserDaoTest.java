@@ -7,8 +7,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import sec1.user.domain.User;
-import sec1.user.domain.UserDao;
+import user.domain.User;
+import user.dao.UserDao;
 
 import java.sql.SQLException;
 
