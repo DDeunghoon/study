@@ -10,9 +10,6 @@
         <property name="username" value="root"/>
         <property name="password" value="qsc20215"/>
     </bean>
-    <bean id="jdbcContext" class="user.dao.JdbcContext">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
 
     <bean id="userDao" class="user.dao.UserDao">
         <property name="dataSource" ref="dataSource"/>
