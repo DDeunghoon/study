@@ -14,13 +14,15 @@ import javax.sql.DataSource;
 
 
 public class UserDao {
-    DataSource dataSource;
+   private DataSource dataSource;
     private JdbcContext jdbcContext;
 
-    public UserDao(JdbcContext jdbcContext) {
-        this.jdbcContext = jdbcContext;
-    }
 
+    public void setDataSource(DataSource dataSource){
+        this.jdbcContext = new JdbcContext();
+        this.jdbcContext.setDataSource(dataSource);
+        this.dataSource = dataSource;
+    }
 
     public void add(final User user) throws SQLException {
         this.jdbcContext.workWithStatementStrategy(
