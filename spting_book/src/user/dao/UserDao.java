@@ -10,8 +10,11 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import user.domain.StatementStrategy;
 import user.domain.User;
 
+import javax.sql.DataSource;
+
 
 public class UserDao {
+    DataSource dataSource;
     private JdbcContext jdbcContext;
 
     public UserDao(JdbcContext jdbcContext) {
