@@ -14,11 +14,11 @@ import javax.sql.DataSource;
 
 
 public class UserDao {
-   private DataSource dataSource;
+    private DataSource dataSource;
     private JdbcContext jdbcContext;
 
 
-    public void setDataSource(DataSource dataSource){
+    public void setDataSource(DataSource dataSource) {
         this.jdbcContext = new JdbcContext();
         this.jdbcContext.setDataSource(dataSource);
         this.dataSource = dataSource;
@@ -61,19 +61,9 @@ public class UserDao {
         return user;
 
     }
-    public void deleteAll() throws SQLException{
-        executeSql("DELETE FROM users");
-    }
 
-    private void executeSql(String query) throws SQLException {
-        this.jdbcContext.workWithStatementStrategy(
-                new StatementStrategy() {
-                    public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
-                        PreparedStatement ps = c.prepareStatement(query);
-                        return ps;
-                    }
-                }
-        );
+    public void deleteAll() throws SQLException {
+        this.jdbcContext.executeSql("DELETE FROM users");
     }
 
 
