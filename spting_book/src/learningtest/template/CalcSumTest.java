@@ -14,7 +14,7 @@ public class CalcSumTest {
     @Before
     public void setUp(){
         this.calculator = new Calculator();
-        this.numFilepath = getClass().getResource("numbers.txt").getPath();
+        this.numFilepath = getClass().getResource("number.txt").getPath();
     }
     @Test
     public void sumOfNumbers() throws IOException{
