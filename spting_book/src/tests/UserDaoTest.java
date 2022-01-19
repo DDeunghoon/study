@@ -24,6 +24,7 @@ public class UserDaoTest {
     private UserDao dao;
     private User user1;
     private User user2;
+    private User user3;
 
 
     @Before
@@ -31,8 +32,9 @@ public class UserDaoTest {
         System.out.println("=================="+ this.context);
         System.out.println("==================="+this);
         this.dao = context.getBean("userDao", UserDao.class);
-        this.user1 = new User("asdf", "asdf1", "asdf1");
-        this.user2 = new User("adsf3", "asdfasdf2", "asdfw2");
+        this.user1 = new User("user1", "asdf1", "asdf1");
+        this.user2 = new User("user2", "asdfasdf2", "asdfw2");
+        this.user3 = new User("user3", "asdfasdf2", "asdfw2");
     }
 
     @Test
@@ -43,11 +45,12 @@ public class UserDaoTest {
 
         dao.add(user1);
         dao.add(user2);
-        assertThat(dao.getCount(), is(2));
+        dao.add(user3);
+        assertThat(dao.getCount(), is(3));
 
 
 
-        System.out.println(dao.get(user1.getId())); // null 발생
+        System.out.println(dao.get(user1.getId())); 
 
 
     }
