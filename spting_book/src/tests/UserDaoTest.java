@@ -21,7 +21,6 @@ import static org.junit.Assert.assertThat;
 @DirtiesContext
 public class UserDaoTest {
     @Autowired
-    private ApplicationContext context;
     private UserDao dao;
     private User user1;
     private User user2;
@@ -30,9 +29,6 @@ public class UserDaoTest {
 
     @Before
     public void setUp() {
-        System.out.println("==================" + this.context);
-        System.out.println("===================" + this);
-        this.dao = context.getBean("userDao", UserDao.class);
         this.user1 = new User("user1", "asdf1", "asdf1");
         this.user2 = new User("user2", "asdfasdf2", "asdfw2");
         this.user3 = new User("user3", "asdfasdf2", "asdfw2");
@@ -59,20 +55,20 @@ public class UserDaoTest {
         dao.add(user1);
         List<User> user1 = dao.getAll();
         assertThat(user1.size(), is(1));
-        checkSameUser(user1, user1.get(0));
+        checkSameUser(this.user1, user1.get(0));
 
         dao.add(user2);
         List<User> user2 = dao.getAll();
         assertThat(user2.size(), is(2));
-        checkSameUser(user1, user1.get(0));
-        checkSameUser(user2, user2.get(1));
+        checkSameUser(this.user1, user2.get(0));
+        checkSameUser(this.user2, user2.get(1));
 
         dao.add(user3);
         List<User> user3 = dao.getAll();
         assertThat(user3.size(), is(3));
-        checkSameUser(user1, user1.get(0));
-        checkSameUser(user2, user1.get(1));
-        checkSameUser(user3, user1.get(2));
+        checkSameUser(this.user1, user3.get(0));
+        checkSameUser(this.user2, user3.get(1));
+        checkSameUser(this.user3, user3.get(2));
     }
     private void checkSameUser(User user1,User user2){
         assertThat(user1.getId(),is(user2.getId()));

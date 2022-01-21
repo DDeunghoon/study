@@ -30,6 +30,7 @@ public class UserDao {
         this.jdbcContext.setDataSource(dataSource);
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.dataSource = dataSource;
+
     }
 
     public void add(final User user) throws SQLException {
