@@ -1,35 +1,22 @@
 package user.dao;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import user.domain.User;
+
+import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.springframework.dao.DataAccessException;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
-import user.domain.StatementStrategy;
-import user.domain.User;
-
-import javax.sql.DataSource;
-
 
 public class UserDao {
-    private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
-    private JdbcContext jdbcContext;
 
 
     public void setDataSource(DataSource dataSource) {
-        this.jdbcContext = new JdbcContext();
-        this.jdbcContext.setDataSource(dataSource);
         this.jdbcTemplate = new JdbcTemplate(dataSource);
-        this.dataSource = dataSource;
 
     }
 
