@@ -2,13 +2,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import user.domain.User;
-import user.dao.UserDao;
+import user.dao.UserDaoJdbc;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -21,7 +20,7 @@ import static org.junit.Assert.assertThat;
 @DirtiesContext
 public class UserDaoTest {
     @Autowired
-    private UserDao dao;
+    private UserDaoJdbc dao;
     private User user1;
     private User user2;
     private User user3;
