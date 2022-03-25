@@ -1,16 +1,12 @@
 public class sec_1 {
-
-
     public static void main(String[] args) {
 
-        Calculator c1 = new Calculator();
-        c1.setX(10);
-        c1.setY(20);
-
-        System.out.println(c1.sum());
-        System.out.println(c1.avg());
+        int result = 100;
+        for (int i=2;i<10;i=i+1){
+            result = result -i ;
+        }
+        System.out.println(result);
     }
-
 }
 
 
